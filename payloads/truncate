@@ -1,0 +1,3 @@
+# help: Overwrites (not cryptographically) the contents of a file - emptying it
+# help: ~truncate /var/log/messages
+builtin echo '' > @1@

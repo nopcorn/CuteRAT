@@ -1,0 +1,5 @@
+# help: Probes for open ports on specified ip and ports. No output about a port means it's closed.
+# help: ~scan-ip 192.168.1.1 22,23,80,8080
+for port in {@2@}; do
+    (builtin echo >/dev/tcp/@1@/$port) >& /dev/null && builtin echo "@1@:$port is open";
+done;

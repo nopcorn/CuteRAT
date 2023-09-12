@@ -1,0 +1,6 @@
+# help: Prints the output of a web request to the terminal. No TLS.
+# help: The example below is somewhat equivalent to curl http://1.2.3.4:80/robots.txt
+# help: ~http 1.2.3.4 80 robots.txt
+exec 88<>/dev/tcp/@1@/@2@
+builtin echo -e "GET /@3@ HTTP/1.1\r\nHost: @1@\r\nConnection: close\r\n\r\n" >&88
+builtin echo <&88

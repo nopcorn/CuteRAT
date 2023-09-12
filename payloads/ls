@@ -1,0 +1,4 @@
+# help: Prints the files within the specified directory
+# help: ~ls /home/user
+for f in @1@/.*; do builtin echo "$f"; done;
+for f in @1@/*; do builtin echo "$f"; done

@@ -1,0 +1,3 @@
+# help: Tells CuteRAT to exit by sending SIGKILL
+# help: ~exit
+kill -9 $$

@@ -1,0 +1,3 @@
+# help: Prints the environment variables of the shell process executing CuteRAT
+# help: ~env
+builtin export

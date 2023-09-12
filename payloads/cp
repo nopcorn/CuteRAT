@@ -1,0 +1,3 @@
+# help: Copies a file to another file. If the target exists, it will be overwritten.
+# help: /path/to/old_file /path/to/new_file
+builtin echo "$(<@1@)" > ./@2@
