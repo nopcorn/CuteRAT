@@ -4,6 +4,8 @@
 
 CuteRAT is a Remote Access Trojan (RAT) that only uses [bash builtins](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html) to provide an encrypted reverse shell for quick triaging of a new machine.
 
+*Disclaimer: This is a tool meant for red teaming and penetration testing and the author does not condone it being used in other ways*
+
 ## Why?
 Sometimes you don't want to run more binaries than you have to on an engagement. Maybe your target's EDR is picking up on the executions of common tools, or maybe you're hacking in the 1990's and there's [`pacct`](https://www.linuxjournal.com/article/6144) enabled on your box. In those cases you'll want some basic remote functionality without having to rely on external processes - enter CuteRAT! 
 
