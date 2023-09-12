@@ -3,14 +3,14 @@
 </p>
 
 # CuteRAT
-CuteRAT is a Remote Access Trojan (RAT) that only uses bash builtins to provide an encrypted reverse shell for quick triaging of a new machine.
+CuteRAT is a Remote Access Trojan (RAT) that only uses [bash builtins](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html) to provide an encrypted reverse shell for quick triaging of a new machine.
 
 ## Why?
-Sometimes you don't want to run more binaries than you have to on an engagement. Maybe your target's EDR is picking up on the executions of common tools, or maybe you're hacking in the 1990's and there's `pacct` enabled on your box. In those cases you'll want some basic remote functionality without having to rely on external processes - enter CuteRAT! 
+Sometimes you don't want to run more binaries than you have to on an engagement. Maybe your target's EDR is picking up on the executions of common tools, or maybe you're hacking in the 1990's and there's [`pacct`](https://www.linuxjournal.com/article/6144) enabled on your box. In those cases you'll want some basic remote functionality without having to rely on external processes - enter CuteRAT! 
 
 CuteRAT leverages the fact that its difficult to examine what is happening in a shell process short of attaching a debugger to it. Combine the delivery of CuteRAT with a non-interactive shell and you've got a pretty stealthy shell on your hands!
 
-Developing CuteRAT has been a good exercise in understanding the full functionalities of the `bash` shell. Given `bash` is a turing complete language, you could theoretically implement **any** complex routine as a built in - as long as you're willing to accept slowed execution.
+Developing CuteRAT has been a good exercise in understanding the full functionalities of the `bash` shell. Given `bash` is a [turing complete language](https://en.wikibooks.org/wiki/Bash_Shell_Scripting/A_Few_Notes_On_Terminology), you could theoretically implement **any** complex routine as a built in - as long as you're willing to accept slowed execution.
 
 ## Features
 - Deployed via a pastable from an SSH session and `nohup`'ed so you can exit the shell. Alternatively you can run it directly from a non-interactive shell - this exercise is left up to the user.
@@ -42,13 +42,13 @@ In keeping with the theme of bash builtins, CuteRAT comes with a set of payloads
 - From an active CuteRAT shell, you can list available payloads with `~help`
 - To get help on a specific payload, type `~help <payload_name>`
 
-Custom payloads can be added to CuteRAT and dropped to the `payloads` directory. They don't have to be comprised of only bash builtins - as long as they can be executed as a single string if passed to a shell (ie, use `;` to delimit commands) it should work fine!
+Custom payloads can be added to CuteRAT and dropped to the `payloads` directory. They don't have to be comprised of only bash builtins - as long as they can be executed as a single string if passed to a shell (ie, use `;` to delimit commands) it should work fine! Hell, you could even get CuteRAT to deploy heavier red teaming tools such as [Mythic](https://github.com/its-a-feature/Mythic).
 
 ## Improvements
 
 Eventually I'd like to get to the following improvements:
 
-- Execution via non-interactive shell to bypass known command logging tricks like `PROMPT_COMMAND`. There are other ways around this if you have exeprience with UNIX logging.
+- Execution via non-interactive shell to bypass known [command logging tricks like `PROMPT_COMMAND`](https://tpaschalis.me/command-prompt-logging/). There are other ways around this if you have exeprience with UNIX logging.
 - Run CuteRAT execution up against a tricked out box with `auditd`. I have a suspicion that even though `auditd` could hook `execve` syscalls, you could hide the commands being run from CuteRAT tasks by leveraging `bash` reading from `STDIN`.
 - Better xor'ing. My xor and string manipulation functions have room for improvement. I suspect I could make the whole process more efficient for large output by getting the key size closer to `MAX_INT`.
 
