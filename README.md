@@ -1,4 +1,6 @@
-![look how hard he's trying](docs/cutie.png)
+<p align="center">
+  <img src="docs/cutie.png">
+</p>
 
 # CuteRAT
 CuteRAT is a Remote Access Trojan (RAT) that only uses bash builtins to provide an encrypted reverse shell for quick triaging of a new machine.
